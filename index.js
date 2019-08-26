@@ -55,7 +55,7 @@ async function app() {
         const result = await classifier.predictClass(activation);
   
         const classes = ['A', 'B', 'C'];
-        console.log(classes[result.classIndex]);
+
         document.getElementById('console').innerText = `
           prediction: ${classes[result.classIndex]}\n
           probability: ${result.confidences[result.classIndex]}
