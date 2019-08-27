@@ -1,22 +1,42 @@
 <html>
-  <head>
-    <!-- Load the latest version of TensorFlow.js -->
-    <script src="https://unpkg.com/@tensorflow/tfjs"></script>
-    <script src="https://unpkg.com/@tensorflow-models/mobilenet@2.0.2"></script>
-    <script src="https://unpkg.com/@tensorflow-models/knn-classifier"></script>
-  </head>
-  <body>
-    <div id="console"></div>
-    <!-- Add an image that we will use to test -->
-    
-    <video autoplay playsinline muted id="webcam" width="224" height="224"></video>
-    
-    <button id="class-a">Add A</button>
-    <button id="class-b">Add B</button>
-    <button id="class-c">Add C</button>
+
+<head>
+
+  <!-- Tailwind css -->
+  <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+  <!-- Load the latest version of TensorFlow.js -->
+  <script src="https://unpkg.com/@tensorflow/tfjs"></script>
+  <script src="https://unpkg.com/@tensorflow-models/mobilenet@2.0.2"></script>
+  <script src="https://unpkg.com/@tensorflow-models/knn-classifier"></script>
+</head>
+
+<body class="bg-gray-300">
+  <p class="text-3xl pt-8 pl-8 text-blue-600 font-bold">Transfer Learning</p>
+  <div class="flex w-full p-8 ">
+    <div class="max-w-sm rounded overflow-hidden shadow-lg p-8 bg-white">
+      <video autoplay playsinline muted id="webcam" width="224" height="224"></video>
+      <div class="px-6 py-4">
+        <p class="text-gray-700 text-base" id="console">
+        </p>
+      </div>
+      <div>
+        <button
+          class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded"
+          id="class-a">Add A</button>
+        <button
+          class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded"
+          id="class-b">Add B</button>
+        <button
+          class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded"
+          id="class-c">Add C</button>
+      </div>
+    </div>
+  </div>
 
 
-    <!-- Load index.js after the content of the page -->
-    <script src="index.js"></script>
-  </body>
+
+  <!-- Load index.js after the content of the page -->
+  <script src="index.js"></script>
+</body>
+
 </html>
