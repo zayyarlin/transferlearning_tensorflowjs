@@ -11,4 +11,4 @@ Live running [example](https://recall-cam.firebaseapp.com/)
 
 Scan QR code to run now on your mobile.
 
-![alt text](https://github.com/zayyarlin/transferlearning_tensorflowjs/QR.png "QR Code")
+![alt text](https://github.com/zayyarlin/transferlearning_tensorflowjs/blob/master/QR.png "QR Code")
