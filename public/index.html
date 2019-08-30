@@ -1,7 +1,6 @@
 <html>
 
 <head>
-
   <!-- Tailwind css -->
   <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
   <!-- Load the latest version of TensorFlow.js -->
@@ -12,11 +11,13 @@
 
 <body class="bg-gray-300">
   <p class="text-3xl pt-8 pl-8 text-blue-600 font-bold">Transfer Learning</p>
+
+  <p class="text-2xl pt-8 pl-8 text-red-600 font-bold" id="wait-msg">Loading Model... Please wait</p>
   <div class="flex w-full p-8 ">
     <div class="max-w-sm rounded overflow-hidden shadow-lg p-8 bg-white">
-      <video autoplay playsinline muted id="webcam" width="224" height="224"></video>
+      <video autoplay playsinline muted id="webcam" width="300" height="300"></video>
       <div class="px-6 py-4">
-        <p class="text-gray-700 text-base" id="console">
+        <p class="text-black text-base font-bold" id="console">
         </p>
       </div>
       <div>
@@ -29,12 +30,17 @@
         <button
           class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded"
           id="class-c">Add C</button>
+
+        <button
+          class="bg-red-500 hover:bg-red-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded"
+          id="reset-btn">Reset</button>
+      </div>
+      <div class="px-6 py-4">
+        <p class="text-black text-base" id="example-count">
+        </p>
       </div>
     </div>
   </div>
-
-
-
   <!-- Load index.js after the content of the page -->
   <script src="index.js"></script>
 </body>

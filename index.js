@@ -1,5 +1,5 @@
 const webcamElement = document.getElementById('webcam');
-const classifier = knnClassifier.create();
+var classifier = knnClassifier.create();
 
 async function setupWebcam() {
     return new Promise((resolve, reject) => {
@@ -22,11 +22,19 @@ async function setupWebcam() {
 
 let net;
 
+classAcount = 0;
+classBcount = 0;
+classCcount = 0;
+
 async function app() {
     console.log('Loading mobilenet..');
   
     // Load the model.
     net = await mobilenet.load();
+
+    var elem = document.querySelector('#wait-msg');
+    elem.parentNode.removeChild(elem);
+
     console.log('Sucessfully loaded model');
   
     await setupWebcam();
@@ -43,9 +51,15 @@ async function app() {
     };
   
     // When clicking a button, add an example for that class.
-    document.getElementById('class-a').addEventListener('click', () => addExample(0));
-    document.getElementById('class-b').addEventListener('click', () => addExample(1));
-    document.getElementById('class-c').addEventListener('click', () => addExample(2));
+    document.getElementById('class-a').addEventListener('click', () => {addExample(0); classAcount++;});
+    document.getElementById('class-b').addEventListener('click', () => {addExample(1); classBcount++;});
+    document.getElementById('class-c').addEventListener('click', () => {addExample(2); classCcount++;});
+    document.getElementById('reset-btn').addEventListener('click', () => {
+      classAcount = 0;
+      classBcount = 0;
+      classCcount = 0;
+      classifier = knnClassifier.create();
+    });
   
     while (true) {
       if (classifier.getNumClasses() > 0) {
@@ -57,8 +71,14 @@ async function app() {
         const classes = ['A', 'B', 'C'];
 
         document.getElementById('console').innerText = `
-          prediction: ${classes[result.classIndex]}\n
-          probability: ${result.confidences[result.classIndex]}
+          Prediction Class: ${classes[result.classIndex]}\n
+          Probability: ${result.confidences[result.classIndex]}
+        `;
+
+        document.getElementById('example-count').innerText = `
+          Examples in Class A: ${classAcount}\n
+          Examples in Class B: ${classBcount}\n
+          Examples in Class C: ${classCcount}
         `;
       }
   
